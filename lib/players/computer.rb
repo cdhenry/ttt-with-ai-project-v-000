@@ -54,13 +54,13 @@ module Players
     end
 
     def opposite_corner
-      if board.cells[0] != token && !board.taken?(9)
+      if board.position[1] != token && !board.taken?(9)
         "9"
-      elsif board.cells[2] != token && !board.taken?(7)
+      elsif board.position[3] != token && !board.taken?(7)
         "7"
-      elsif board.cells[6] != token && !board.taken?(3)
+      elsif board.position[7] != token && !board.taken?(3)
         "3"
-      elsif board.cells[8] != token && !board.taken?(1)
+      elsif board.position[9] != token && !board.taken?(1)
         "1"
       else
         false
