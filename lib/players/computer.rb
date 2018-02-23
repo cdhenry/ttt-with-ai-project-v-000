@@ -97,30 +97,30 @@ module Players
 
     def bifurcate
       bifurcate = BIFURCATE_COMBINATIONS.detect do |combo|
-                board.cells[combo[0]] == board.cells[combo[1]] &&
-                board.cells[combo[2]] == " " &&
-                board.cells[combo[0]] != " " &&
-                board.cells[combo[0]] == token
+                board.position[combo[0]] == board.position[combo[1]] &&
+                board.position[combo[2]] == " " &&
+                board.position[combo[0]] != " " &&
+                board.position[combo[0]] == token
               end
       bifurcate2 = BIFURCATE_COMBINATIONS.detect do |combo|
-                board.cells[combo[1]] == board.cells[combo[2]] &&
-                board.cells[combo[0]] == " " &&
-                board.cells[combo[1]] != " " &&
-                board.cells[combo[1]] == token
+                board.position[combo[1]] == board.position[combo[2]] &&
+                board.position[combo[0]] == " " &&
+                board.position[combo[1]] != " " &&
+                board.position[combo[1]] == token
               end
       bifurcate3 = BIFURCATE_COMBINATIONS.detect do |combo|
-                board.cells[combo[2]] == board.cells[combo[0]] &&
-                board.cells[combo[1]] == " " &&
-                board.cells[combo[2]] != " " &&
-                board.cells[combo[2]] == token
+                board.position[combo[2]] == board.position[combo[0]] &&
+                board.position[combo[1]] == " " &&
+                board.position[combo[2]] != " " &&
+                board.position[combo[2]] == token
               end
 
       if bifurcate
-        bifurcate[2] + 1
+        bifurcate[2]
       elsif bifurcate2
-        bifurcate2[0] + 1
+        bifurcate2[0]
       elsif bifurcate3
-        bifurcate3[1] + 1
+        bifurcate3[1]
       else
         false
       end
@@ -128,30 +128,30 @@ module Players
 
     def block_bifurcate
       block_bifurcate = BIFURCATE_COMBINATIONS.detect do |combo|
-                board.cells[combo[0]] == board.cells[combo[1]] &&
-                board.cells[combo[2]] == " " &&
-                board.cells[combo[0]] != " " &&
-                board.cells[combo[0]] != token
+                board.position[combo[0]] == board.position[combo[1]] &&
+                board.position[combo[2]] == " " &&
+                board.position[combo[0]] != " " &&
+                board.position[combo[0]] != token
               end
       block_bifurcate2 = BIFURCATE_COMBINATIONS.detect do |combo|
-                board.cells[combo[1]] == board.cells[combo[2]] &&
-                board.cells[combo[0]] == " " &&
-                board.cells[combo[1]] != " " &&
-                board.cells[combo[1]] != token
+                board.position[combo[1]] == board.position[combo[2]] &&
+                board.position[combo[0]] == " " &&
+                board.position[combo[1]] != " " &&
+                board.position[combo[1]] != token
               end
       block_bifurcate3 = BIFURCATE_COMBINATIONS.detect do |combo|
-                board.cells[combo[2]] == board.cells[combo[0]] &&
-                board.cells[combo[1]] == " " &&
-                board.cells[combo[2]] != " " &&
-                board.cells[combo[2]] != token
+                board.position[combo[2]] == board.position[combo[0]] &&
+                board.position[combo[1]] == " " &&
+                board.position[combo[2]] != " " &&
+                board.position[combo[2]] != token
               end
 
       if block_bifurcate
-        block_bifurcate[2] + 1
+        block_bifurcate[2]
       elsif block_bifurcate2
-        block_bifurcate2[0] + 1
+        block_bifurcate2[0]
       elsif block_bifurcate3
-        block_bifurcate3[1] + 1
+        block_bifurcate3[1]
       else
         false
       end
@@ -159,30 +159,30 @@ module Players
 
     def block
       block = WIN_COMBINATIONS.detect do |combo|
-                board.cells[combo[0]] == board.cells[combo[1]] &&
-                board.cells[combo[2]] == " " &&
-                board.cells[combo[0]] != " " &&
-                board.cells[combo[0]] != token
+                board.position[combo[0]] == board.position[combo[1]] &&
+                board.position[combo[2]] == " " &&
+                board.position[combo[0]] != " " &&
+                board.position[combo[0]] != token
               end
       block2 = WIN_COMBINATIONS.detect do |combo|
-                board.cells[combo[1]] == board.cells[combo[2]] &&
-                board.cells[combo[0]] == " " &&
-                board.cells[combo[1]] != " " &&
-                board.cells[combo[1]] != token
+                board.position[combo[1]] == board.position[combo[2]] &&
+                board.position[combo[0]] == " " &&
+                board.position[combo[1]] != " " &&
+                board.position[combo[1]] != token
               end
       block3 = WIN_COMBINATIONS.detect do |combo|
-                board.cells[combo[2]] == board.cells[combo[0]] &&
-                board.cells[combo[1]] == " " &&
-                board.cells[combo[2]] != " " &&
-                board.cells[combo[2]] != token
+                board.position[combo[2]] == board.position[combo[0]] &&
+                board.position[combo[1]] == " " &&
+                board.position[combo[2]] != " " &&
+                board.position[combo[2]] != token
               end
 
       if block
-        block[2] + 1
+        block[2]
       elsif block2
-        block2[0] + 1
+        block2[0]
       elsif block3
-        block3[1] + 1
+        block3[1]
       else
         false
       end
@@ -190,30 +190,30 @@ module Players
 
     def win
       winner = WIN_COMBINATIONS.detect do |combo|
-                board.cells[combo[0]] == board.cells[combo[1]] &&
-                board.cells[combo[2]] == " " &&
-                board.cells[combo[0]] != " " &&
-                board.cells[combo[0]] == token
+                board.position[combo[0]] == board.position[combo[1]] &&
+                board.position[combo[2]] == " " &&
+                board.position[combo[0]] != " " &&
+                board.position[combo[0]] == token
               end
       winner2 = WIN_COMBINATIONS.detect do |combo|
-                board.cells[combo[1]] == board.cells[combo[2]] &&
-                board.cells[combo[0]] == " " &&
-                board.cells[combo[1]] != " " &&
-                board.cells[combo[1]] == token
+                board.position[combo[1]] == board.position[combo[2]] &&
+                board.position[combo[0]] == " " &&
+                board.position[combo[1]] != " " &&
+                board.position[combo[1]] == token
               end
       winner3 = WIN_COMBINATIONS.detect do |combo|
-                board.cells[combo[2]] == board.cells[combo[0]] &&
-                board.cells[combo[1]] == " " &&
-                board.cells[combo[2]] != " " &&
-                board.cells[combo[2]] == token
+                board.position[combo[2]] == board.position[combo[0]] &&
+                board.position[combo[1]] == " " &&
+                board.position[combo[2]] != " " &&
+                board.position[combo[2]] == token
               end
 
       if winner
-        winner[2] + 1
+        winner[2]
       elsif winner2
-        winner2[0] + 1
+        winner2[0]
       elsif winner3
-        winner3[1] + 1
+        winner3[1]
       else
         false
       end
