@@ -2,14 +2,14 @@ class Game
   attr_accessor :board, :player_1, :player_2
 
     WIN_COMBINATIONS = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9],
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
     [1,4,7],
     [2,5,8],
-    [3,6,9],
-    [1,5,9],
-    [7,5,3]
+    [0,4,8],
+    [6,4,2]
   ]
 
   def initialize(player_1 = Players::Human.new("X"), player_2 = Players::Human.new("O"), board = Board.new)
@@ -28,9 +28,9 @@ class Game
 
   def won?
     winner = WIN_COMBINATIONS.select do |combo|
-              board.position[combo[0]] == board.position[combo[1]] &&
-              board.position[combo[1]] == board.position[combo[2]] &&
-              board.taken?(combo[0])
+              board.cells[combo[0]] == board.cells[combo[1]] &&
+              board.cells[combo[1]] == board.cells[combo[2]] &&
+              board.taken?(combo[0] + 1)
             end
 
     if winner.count == 0
